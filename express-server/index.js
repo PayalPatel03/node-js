@@ -20,9 +20,6 @@ app.get('/blog',(req,res)=>{
     return res.render('blog');
 })
 
-
-
-
 app.listen(PORT,(err)=>{
     if(err){
         console.log(err.message);
