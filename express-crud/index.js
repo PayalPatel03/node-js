@@ -1,36 +1,40 @@
-const express = require('express');
+const express = require("express");
 
-const PORT=1503;
-const app=express();
+const PORT = 1503;
+const app = express();
 
-app.set('view engine', 'ejs'); 
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+let users = [];
 
-app.use(express.urlencoded({ extended: true })); 
+app.get("/", (req, res) => {
+  console.log(users);
+  return res.render("index", {
+    users,
+  });
+});
+app.get("/user/delete/:id", (req, res) => {
+  let { id } = req.params;
+  users = users.filter((user) => user.id !== id);
+  return res.redirect("/");
+});
 
-const users=[];
+app.post("/signup", (req, res) => {
+  let obj = {
+    id: Date.now(),
+    email: req.body.email,
+    password: req.body.password,
+  };
+  users.push(obj);
+  console.log("Data added..");
+  return res.redirect("/");
+});
 
-app.get('/',(req,res)=>{
-    console.log(users);
-    
-    return res.render('index');
-})
-app.post('/signup',(req,res)=>{
-    let obj={
-        email:req.body.email,
-        password:req.body.password,
-    }
-    users.push(obj);
-    console.log("Data addedd..");
-    
-    return res.redirect('/');
-})
-
-app.listen(PORT,function(err){
-    if(err){
-        console.log(err.message);  
-    }
-    else{
-        console.log("Server started..")
-        console.log("http://localhost:"+PORT)
-    }
-})
+app.listen(PORT, function (err) {
+  if (err) {
+    console.log(err.message);
+  } else {
+    console.log("Server started..");
+    console.log("http://localhost:" + PORT);
+  }
+});
