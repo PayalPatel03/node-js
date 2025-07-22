@@ -9,19 +9,19 @@ let users = [];
 
 app.get("/", (req, res) => {
   console.log(users);
-  return res.render("index", {
-    users,
+  return res.render("index",{
+    users
   });
 });
 app.get("/user/delete/:id", (req, res) => {
-  let { id } = req.params;
-  users = users.filter((user) => user.id !== id);
+const {id}=req.params;
+  users = users.filter((user) => user.id != id);
   return res.redirect("/");
 });
 
 app.post("/signup", (req, res) => {
   let obj = {
-    id: Date.now(),
+    id: Date.now(), 
     email: req.body.email,
     password: req.body.password,
   };
@@ -29,6 +29,7 @@ app.post("/signup", (req, res) => {
   console.log("Data added..");
   return res.redirect("/");
 });
+
 
 app.listen(PORT, function (err) {
   if (err) {
