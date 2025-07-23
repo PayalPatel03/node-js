@@ -2,99 +2,127 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Employee-crud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Employee Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style>
+      body {
+        background: #0f2027;
+        background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+        color: #f0f0f0;
+        font-family: 'Segoe UI', sans-serif;
+      }
+      h2 {
+        text-shadow: 0 0 10px #00f0ff;
+      }
+      .form-card {
+        background: #1c1c1c;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      }
+      .form-control {
+        background-color: #2d2d2d;
+        border: none;
+        color: white;
+      }
+      .form-control:focus {
+        border: 2px solid #00e0ff;
+        background-color: #2d2d2d;
+        box-shadow: 0 0 10px #00f0ff;
+        color: white;
+      }
+      .btn-glow {
+        background-color: #00e0ff;
+        color: #000;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px #00e0ff, 0 0 20px #00e0ff;
+      }
+      .btn-glow:hover {
+        background-color: #00ffff;
+        color: #000;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+      }
+      .table-dark th, .table-dark td {
+        vertical-align: middle;
+      }
+      .btn-danger, .btn-warning {
+        transition: 0.3s;
+      }
+      .btn-danger:hover {
+        background-color: #ff4d4d;
+        box-shadow: 0 0 15px #ff4d4d;
+      }
+      .btn-warning:hover {
+        background-color: #ffc107;
+        box-shadow: 0 0 15px #ffc107;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <div class="row mt-5">
+    <div class="container py-5">
+      <div class="row mb-5">
         <div class="col-md-6 mx-auto">
-          <h2 class="text-info">Login-Form</h2>
-          <form method="post" action="/login">
-            <!--employee id-->
-            <div class="mb-3">
-              <label for="emp_id" class="form-label">Employee ID</label>
-              <input
-                name="employee_id"
-                type="number"
-                class="form-control"
-                id="emp_id"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <!--emaployee name-->
-            <div class="mb-3">
-              <label for="emp_name" class="form-label">Employee Name</label>
-              <input
-                name="employee_name"
-                type="text"
-                class="form-control"
-                id="emp_name"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <!--employee department-->
-            <div class="mb-3">
-              <label for="department" class="form-label">Department</label>
-              <input
-                name="dep"
-                type="text"
-                class="form-control"
-                id="department"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <!--salary-->
-            <div class="mb-3">
-              <label for="salary" class="form-label">Salary</label>
-              <input
-                name="emp_salary"
-                type="number"
-                class="form-control"
-                id="salary"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+          <h2 class="text-center"> Employee Manager</h2>
+          <div class="form-card mt-4">
+            <form method="post" action="/login">
+              <div class="mb-3">
+                <label for="emp_name" class="form-label">Employee Name</label>
+                <input name="employee_name" type="text" class="form-control" id="emp_name" required />
+              </div>
+              <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <input name="dep" type="text" class="form-control" id="department" required />
+              </div>
+              <div class="mb-3">
+                <label for="salary" class="form-label">Salary</label>
+                <input name="emp_salary" type="number" class="form-control" id="salary" required />
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-glow">Add Employee</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      <!--table data-->
-      <div class="row mt-3">
-        <table class="table table-dark table-stripped table-hover">
-          <thead>
-            <tr>
-              <th>Sr.no</th>
-              <th>Employee ID</th>
-              <th>Name</th>
-              <th>Department</th>
-              <th>Salary</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% employees.map((employee,idx)=>{%>
-            <tr>
-              <td><%=idx+1%></td>
-              <td><%=employee.employee_id%></td>  
 
-              <td><%=employee.employee_name%></td>
-              <td><%=employee.dep%></td>
-              <td><%=employee.emp_salary%></td>
-              <td>
-                <a href="/employee/delete/<%=employee.id%>" class="btn btn-danger"
-                  >Delete</a
-                >
-                <a href="" class="btn btn-warning">Edit</a>
-              </td>
-            </tr>
-            <%})%>
-          </tbody>
-        </table>
+      <!-- Table -->
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-dark table-hover text-center align-middle shadow">
+            <thead>
+              <tr class="table-primary text-dark">
+                <th>#</th>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% employees.map((employee, idx) => { %>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= employee.employee_id %></td>
+                <td><%= employee.employee_name %></td>
+                <td><%= employee.dep %></td>
+                <td><%= employee.emp_salary %></td>
+                <td>
+                  <a href="" class="btn btn-warning btn-sm me-1"><i class="fa-solid fa-pen"></i></a>
+                  <a href="/employee/delete/<%= employee.id %>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>
