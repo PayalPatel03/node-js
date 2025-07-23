@@ -8,15 +8,15 @@ app.use(express.urlencoded({ extended: true }));
 let users = [];
 
 app.get("/", (req, res) => {
-  console.log(users);
-  return res.render("index",{
-    users
-  });
+    console.log(users);
+    return res.render("index",{
+        users
+    });
 });
 app.get("/user/delete/:id", (req, res) => {
-const {id}=req.params;
-  users = users.filter((user) => user.id != id);
-  return res.redirect("/");
+    const {id}=req.params;
+    users = users.filter((user) => user.id != id);
+    return res.redirect("/");
 });
 
 app.post("/signup", (req, res) => {

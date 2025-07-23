@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee-crud</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-6 mx-auto">
+          <h2 class="text-info">Login-Form</h2>
+          <form method="post" action="/login">
+            <!--employee id-->
+            <div class="mb-3">
+              <label for="emp_id" class="form-label">Employee ID</label>
+              <input
+                name="employee_id"
+                type="number"
+                class="form-control"
+                id="emp_id"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <!--emaployee name-->
+            <div class="mb-3">
+              <label for="emp_name" class="form-label">Employee Name</label>
+              <input
+                name="employee_name"
+                type="text"
+                class="form-control"
+                id="emp_name"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <!--employee department-->
+            <div class="mb-3">
+              <label for="department" class="form-label">Department</label>
+              <input
+                name="dep"
+                type="text"
+                class="form-control"
+                id="department"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <!--salary-->
+            <div class="mb-3">
+              <label for="salary" class="form-label">Salary</label>
+              <input
+                name="emp_salary"
+                type="number"
+                class="form-control"
+                id="salary"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <!--table data-->
+      <div class="row mt-3">
+        <table class="table table-dark table-stripped table-hover">
+          <thead>
+            <tr>
+              <th>Sr.no</th>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Salary</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% employees.map((employee,idx)=>{%>
+            <tr>
+              <td><%=idx+1%></td>
+              <td><%=employee.employee_id%></td>  
+
+              <td><%=employee.employee_name%></td>
+              <td><%=employee.dep%></td>
+              <td><%=employee.emp_salary%></td>
+              <td>
+                <a href="/employee/delete/<%=employee.id%>" class="btn btn-danger"
+                  >Delete</a
+                >
+                <a href="" class="btn btn-warning">Edit</a>
+              </td>
+            </tr>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
