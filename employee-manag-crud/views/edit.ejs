@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Employee Manager</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Data</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,7 +20,7 @@
         background: #0f2027;
         background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
         color: #f0f0f0;
-        font-family: 'Segoe UI', sans-serif;
+        font-family: "Segoe UI", sans-serif;
       }
       h2 {
         text-shadow: 0 0 10px #00f0ff;
@@ -49,10 +55,12 @@
         transform: scale(1.05);
         box-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
       }
-      .table-dark th, .table-dark td {
+      .table-dark th,
+      .table-dark td {
         vertical-align: middle;
       }
-      .btn-danger, .btn-warning {
+      .btn-danger,
+      .btn-warning {
         transition: 0.3s;
       }
       .btn-danger:hover {
@@ -69,59 +77,47 @@
     <div class="container py-5">
       <div class="row mb-5">
         <div class="col-md-6 mx-auto">
-          <h2 class="text-center"> Employee Manager</h2>
+          <h2 class="text-center">Edit Data</h2>
           <div class="form-card mt-4">
-            <form method="post" action="/login">
+            <form method="post" action="">
               <div class="mb-3">
                 <label for="emp_name" class="form-label">Employee Name</label>
-                <input name="employee_name" type="text" class="form-control" id="emp_name" required />
+                <input
+                  name="employee_name"
+                  value="<%=data.employee_name%>"
+                  type="text"
+                  class="form-control"
+                  id="emp_name"
+                  required
+                />
               </div>
               <div class="mb-3">
                 <label for="department" class="form-label">Department</label>
-                <input name="dep" type="text" class="form-control" id="department" required />
+                <input
+                  name="dep"
+                  value="<%=data.dep%>"
+                  type="text"
+                  class="form-control"
+                  id="department"
+                  required
+                />
               </div>
               <div class="mb-3">
                 <label for="salary" class="form-label">Salary</label>
-                <input name="emp_salary" type="number" class="form-control" id="salary" required />
+                <input
+                  name="emp_salary"
+                  value="<%=data.emp_salary%>"
+                  type="number"
+                  class="form-control"
+                  id="salary"
+                  required
+                />
               </div>
               <div class="d-grid">
-                <button type="submit" class="btn btn-glow">Add Employee</button>
+                <button type="submit" class="btn btn-glow">Update Employee</button>
               </div>
             </form>
           </div>
-        </div>
-      </div>
-
-      <!-- Table -->
-      <div class="row">
-        <div class="col-12">
-          <table class="table table-dark table-hover text-center align-middle shadow">
-            <thead>
-              <tr class="table-primary text-dark">
-                <th>#</th>
-                <th>Employee ID</th>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Salary</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% employees.map((employee, idx) => { %>
-              <tr>
-                <td><%= idx + 1 %></td>
-                <td><%= employee.employee_id %></td>
-                <td><%= employee.employee_name %></td>
-                <td><%= employee.dep %></td>
-                <td><%= employee.emp_salary %></td>
-                <td>
-                  <a href="/employee/edit/?id=<%= employee.id%>" class="btn btn-warning btn-sm me-1"><i class="fa-solid fa-pen"></i></a>
-                  <a href="/employee/delete/<%= employee.id %>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
-                </td>
-              </tr>
-              <% }) %>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
