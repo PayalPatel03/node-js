@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manage Tasks</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+        color: #f0f0f0;
+        font-family: 'Segoe UI', sans-serif;
+      }
+      .form-card, .task-card {
+        background: #1c1c1c;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+        margin-bottom: 30px;
+      }
+      .s{
+         background-color: slategrey;
+      }
+      .form-control {
+        background-color: slategrey;
+        border: none;
+        color: white;
+      }
+      .form-control:focus {
+        border: 2px solid #00e0ff;
+        background-color: #2d2d2d;
+        box-shadow: 0 0 10px #00f0ff;
+        color: white;
+      }
+      
+
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="col-md-8 mx-auto">
+        <h2 class="text-center mb-4">Tasks for <%= employee.employee_name %></h2>
+
+        <!-- Form Card -->
+        <div class="form-card">
+          <form method="POST" action="/employee/tasks/<%= employee.id %>">
+            <div class="mb-3">
+              <label class="form-label fw-bold">New Task</label>
+              <input
+                name="task"
+                type="text"
+                class="form-control"
+                placeholder="Enter task..."
+                required
+              />
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-info"><i class="fa-solid fa-plus"></i> Add Task</button>
+              <a href="/" class="btn s">Back</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Task List Card -->
+        <div class="task-card">
+          <h4 class="mb-3">Task List</h4>
+          <ul class="list-group">
+            <% if (employee.tasks.length === 0) { %>
+              <li class="list-group-item text-dark">No tasks yet.</li>
+            <% } else { %>
+              <% employee.tasks.forEach((task, index) => { %>
+                <li class="list-group-item text-dark">
+                  <i class="fa-solid fa-check-circle task-icon"></i>
+                  <%= index + 1 %>. <%= task %>
+                </li>
+              <% }) %>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

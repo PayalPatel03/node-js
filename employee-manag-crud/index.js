@@ -40,6 +40,31 @@ app.post("/employee/edit/", (req, res) => {
   return res.redirect("/");
 });
 
+//task
+
+app.get("/employee/tasks/:id", (req, res) => {
+  const { id } = req.params;
+  const employee = employees.find((emp) => emp.id == id);
+  if (!employee) return res.send("Employee not found");
+
+  res.render("tasks", { employee });
+});
+
+app.post("/employee/tasks/:id", (req, res) => {
+  const { id } = req.params;
+  const { task } = req.body;
+
+  employees = employees.map((emp) => {
+    if (emp.id == id) {
+      emp.tasks.push(task);
+    }
+    return emp;
+  });
+
+  res.redirect(`/employee/tasks/${id}`);
+});
+
+
 app.post("/login", (req, res) => {
   const uniqueId = Date.now();
   let obj = {
@@ -48,6 +73,7 @@ app.post("/login", (req, res) => {
     employee_name: req.body.employee_name,
     dep: req.body.dep,
     emp_salary: req.body.emp_salary,
+     tasks: [] 
   };
 
   employees.push(obj);
