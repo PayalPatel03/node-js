@@ -37,8 +37,15 @@ app.post("/employee/edit/", (req, res) => {
     return employee;
   });
 
-  return res.redirect("/");
+return res.redirect("/employee/table");
+
 });
+app.get("/employee/table", (req, res) => {
+  return res.render("table", {
+    employees,
+  });
+});
+
 
 //task
 
@@ -78,7 +85,7 @@ app.post("/login", (req, res) => {
 
   employees.push(obj);
   console.log("Data added:", obj);
-  return res.redirect("/");
+  return res.redirect("/employee/table");
 });
 
 app.listen(port, (err) => {
