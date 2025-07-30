@@ -46,6 +46,36 @@
           </form>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table-stripped table-dark table-hover table-responsive">
+            <thead>
+              <tr>
+                <td>Sr No.</td>
+                <td>Book Name</td>
+                <td>Book Price</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% books.map((book,index)=>{  
+                let {id,book_name,book_price}=book;
+               %>
+                <tr>
+                  <td><%= index+1%></td>
+                  <td><%= book_name%></td>
+                  <td><%= book_price%></td>
+                  <td>
+                    <a href="/book/delete/<%= id %>" class="btn btn-danger">Delete</a>
+                    <a href="/book/edit/<%= id %>" class="btn btn-warning">Delete</a>
+                  </td>
+                </tr>
+
+              <% })%>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </body>
 </html>
