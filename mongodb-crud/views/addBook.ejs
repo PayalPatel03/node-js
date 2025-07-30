@@ -17,11 +17,9 @@
         <div class="col-md-6 mx-auto">
           <form method="post" action="/add">
             <div class="mb-3">
-              <label for="name" class="form-label"
-                >Book Name</label
-              >
+              <label for="name" class="form-label">Book Name</label>
               <input
-              name="book_name"
+                name="book_name"
                 type="text"
                 class="form-control"
                 id="name"
@@ -29,49 +27,50 @@
               />
             </div>
 
-             <div class="mb-3">
-              <label for="price" class="form-label"
-                >Book Price</label
-              >
+            <div class="mb-3">
+              <label for="price" class="form-label">Book Price</label>
               <input
-              name="book_price"
+                name="book_price"
                 type="text"
                 class="form-control"
                 id="price"
                 aria-describedby="emailHelp"
               />
             </div>
-           
+
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
       <div class="row">
         <div class="col-md-8">
-          <table class="table-stripped table-dark table-hover table-responsive">
+          <table class="table caption-top table-striped table-dark table-hover table-responsive">
+            <caption><h3>Book List</h3></caption>
             <thead>
               <tr>
-                <td>Sr No.</td>
-                <td>Book Name</td>
-                <td>Book Price</td>
-                <td>Action</td>
+                <th>Sr No.</th>
+                <th>Book Name</th>
+                <th>Book Price</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <% books.map((book,index)=>{  
-                let {id,book_name,book_price}=book;
-               %>
-                <tr>
-                  <td><%= index+1%></td>
-                  <td><%= book_name%></td>
-                  <td><%= book_price%></td>
-                  <td>
-                    <a href="/book/delete/<%= id %>" class="btn btn-danger">Delete</a>
-                    <a href="/book/edit/<%= id %>" class="btn btn-warning">Delete</a>
-                  </td>
-                </tr>
-
-              <% })%>
+              <% books.map((book, index) => { let {_id, book_name,
+              book_price} = book; %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= book_name %></td>
+                <td><%= book_price %></td>
+                <td>
+                  <a href="/book/delete/<%= _id %>" class="btn btn-danger"
+                    >Delete</a
+                  >
+                  <a href="/book/edit/<%= _id %>" class="btn btn-warning"
+                    >Edit</a
+                  >
+                </td>
+              </tr>
+              <% }) %>
             </tbody>
           </table>
         </div>

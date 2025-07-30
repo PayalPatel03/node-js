@@ -10,18 +10,15 @@ app.use(bodyParser.urlencoded());
 
 app.get("/", (req, res) => {
   Books.find({})
-    .then((book) => {
-      return res.render("addBook", {
-        book,
-      });
+    .then((books) => {
+      return res.render("addBook", { books });
     })
     .catch((err) => {
       console.log(err.message);
-      return res.render("addBook", {
-        book: [],
-      });
+      return res.render("addBook", { books: [] });
     });
 });
+
 //delete
 app.get('/book/delete/:id',(req,res)=>{
     let {id}=req.params;
