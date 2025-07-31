@@ -15,13 +15,14 @@
     <div class="container">
       <div class="row mt-5">
         <div class="col-md-6 mx-auto">
-          <form method="post" action="/add">
-            <h2>Add book</h2>
+        <form method="post" action="/book/edit/<%= book._id %>">
+            <h2>Edit book</h2>
             <div class="mb-3">
               <label for="name" class="form-label">Book Name</label>
               <input
                 name="book_name"
                 type="text"
+                   value="<%= book.book_name %>"
                 class="form-control"
                 id="name"
                 aria-describedby="emailHelp"
@@ -33,49 +34,18 @@
               <input
                 name="book_price"
                 type="text"
+                value="<%= book.book_price %>"
                 class="form-control"
                 id="price"
                 aria-describedby="emailHelp"
               />
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
           </form>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-8">
-          <table class="table caption-top table-striped table-dark table-hover table-responsive">
-            <caption><h3>Book List</h3></caption>
-            <thead>
-              <tr>
-                <th>Sr No.</th>
-                <th>Book Name</th>
-                <th>Book Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% books.map((book, index) => { let {_id, book_name,
-              book_price} = book; %>
-              <tr>
-                <td><%= index + 1 %></td>
-                <td><%= book_name %></td>
-                <td><%= book_price %></td>
-                <td>
-                  <a href="/book/delete/<%= _id %>" class="btn btn-danger"
-                    >Delete</a
-                  >
-                  <a href="/book/edit/<%= _id %>" class="btn btn-warning"
-                    >Edit</a
-                  >
-                </td>
-              </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+     
     </div>
   </body>
 </html>
