@@ -15,14 +15,14 @@
     <div class="container">
       <div class="row mt-5">
         <div class="col-md-6 mx-auto">
-        <form method="post" action="/book/edit/<%= book._id %>">
+          <form method="post" action="/book/edit/<%= book._id %>">
             <h2>Edit book</h2>
             <div class="mb-3">
               <label for="name" class="form-label">Book Name</label>
               <input
                 name="book_name"
                 type="text"
-                   value="<%= book.book_name %>"
+                value="<%= book.book_name %>"
                 class="form-control"
                 id="name"
                 aria-describedby="emailHelp"
@@ -45,7 +45,6 @@
           </form>
         </div>
       </div>
-     
     </div>
   </body>
 </html>
