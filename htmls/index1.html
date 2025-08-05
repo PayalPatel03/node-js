@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style1.css">
+</head>
+<body>
+  <div class="auth-container d-flex">
+    <div class="left-panel">
+      <img src="https://cdn.pixabay.com/photo/2022/10/26/16/21/mountain-7550037_1280.jpg" alt="bg" />
+    </div>
+    <div class="right-panel">
+      <div class="form-box">
+        <h2 id="formTitle">Login</h2>
+
+        <form id="authForm">
+          <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Email" required />
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" placeholder="Password" required />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+
+          <p class="toggle-text mt-3">
+            Don't have an account? 
+            <a href="#" id="toggleForm">Sign Up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("toggleForm");
+    const form = document.getElementById("authForm");
+    const title = document.getElementById("formTitle");
+
+    let isLogin = true;
+
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      isLogin = !isLogin;
+      title.textContent = isLogin ? "Login" : "Sign Up";
+      toggle.innerHTML = isLogin
+        ? `Don't have an account? <a href="#" id="toggleForm">Sign Up</a>`
+        : `Already have an account? <a href="#" id="toggleForm">Login</a>`;
+    });
+  </script>
+</body>
+</html>
