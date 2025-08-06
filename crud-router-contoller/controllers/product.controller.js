@@ -1,19 +1,18 @@
-const Product = require("../modules/productSchema");
 
-exports.showProducts = async (req, res) => {
-      console.log("Request Body:", req.body); 
-    const products = await Product.find();
-    res.render("index", { products });
-};
+const Product = require("../models/productSchema")
 
-exports.addProductPage = (req, res) => {
-    res.render("addProduct");
-};
+module.exports.home = (req,res)=>{
+    res.render('index')
+}
 
-exports.addProduct = async (req, res) => {    
-    console.log(req.body);
-    
-    const { name, price, description, category } = req.body;
-    await Product.create({ name, price, description, category });
-    res.redirect("/");
-};
+module.exports.addProduct = async (req,res)=>{
+    try{
+        console.log(req.body)
+        await Product.create(req.body)
+        res.redirect(req.get('Referrer') || '/')
+    }
+    catch(err){
+        console.log(err)
+        res.redirect(req.get('Referrer') || '/')
+    }
+}
