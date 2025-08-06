@@ -1,12 +1,15 @@
-const express=require('express');
+const express= require('express');
 const db = require('./configs/database');
-const { addProductPage } = require('./controllers/product.controller');
+const productRouter = require("./routers/product.router");
+const bodyParser = require('body-parser');
 const app=express();
 const port=1503;
 
 app.set('view engine','ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/',addProductPage)
+
+app.use("/", productRouter);
 
 app.listen(port,(err)=>{
     
