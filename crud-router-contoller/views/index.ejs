@@ -1,56 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Product CRUD</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
     />
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md-7 mx-auto">
-            <h3 class="my-4">Add Product Detail : </h3>
-          <form method="post" action="">
+          <h3 class="my-4">Add Product Detail:</h3>
+       <form method="POST" action="/add-product">
+
             <div class="mb-3">
-              <label for="p_name" class="form-label"
-                >Product Name :</label
-              >
+              <label for="p_name" class="form-label">Product Name:</label>
               <input
                 type="text"
                 class="form-control"
                 id="p_name"
                 name="p_name"
+                required
               />
             </div>
             <div class="mb-3">
-              <label for="p_price" class="form-label"
-                >Product Price :</label
-              >
+              <label for="p_price" class="form-label">Product Price:</label>
               <input
                 type="number"
                 class="form-control"
                 id="p_price"
                 name="p_price"
+                required
               />
             </div>
             <div class="mb-3">
-              <label for="description" class="form-label"
-                >Description :</label
-              >
-              <textarea class="form-control" name="description" id="description"></textarea>
+              <label for="description" class="form-label">Description:</label>
+              <textarea
+                class="form-control"
+                name="description"
+                id="description"
+                required
+              ></textarea>
             </div>
             <div class="mb-3">
-              <label for="category" class="form-label"
-                >Category :</label
-              >
-              <select class="form-select" name="category" id="category">
+              <label for="category" class="form-label">Category:</label>
+              <select class="form-select" name="category" id="category" required>
                 <option value="" disabled selected>--Select-category--</option>
                 <option value="Fashion">Fashion</option>
                 <option value="Electronic">Electronic</option>
@@ -61,12 +58,11 @@
           </form>
         </div>
       </div>
-      <div class="row">
+
+      <div class="row mt-5">
         <div class="col-md-12">
           <table class="caption-top table table-dark table-hover table-striped">
-            <caption>
-              <h2>Data</h2>
-            </caption>
+            <caption><h2>Product List</h2></caption>
             <thead>
               <tr>
                 <th>Sr No.</th>
@@ -78,19 +74,27 @@
               </tr>
             </thead>
             <tbody>
-              <% data.map((value,idx)=>{ %>
-                
-
-              })%>
+              <% data.forEach((value, idx) => { %>
+                <tr>
+                  <td><%= idx + 1 %></td>
+                  <td><%= value.p_name %></td>
+                  <td><%= value.p_price %></td>
+                  <td><%= value.description %></td>
+                  <td><%= value.category %></td>
+                  <td>
+                    <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                  </td>
+                </tr>
+              <% }) %>
             </tbody>
           </table>
         </div>
       </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
     ></script>
   </body>
 </html>
