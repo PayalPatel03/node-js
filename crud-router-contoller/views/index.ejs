@@ -14,11 +14,12 @@
       <div class="row">
         <div class="col-md-7 mx-auto">
           <h3 class="my-4">Add Product Detail:</h3>
-          <form method="POST" action="/add-product">
+         <form action="<%= editData ? '/edit/' + editData._id : '/add-product' %>" method="POST">
             <div class="mb-3">
               <label for="p_name" class="form-label">Product Name:</label>
               <input
                 type="text"
+                value="<%= editData ? editData.p_name : '' %>"
                 class="form-control"
                 id="p_name"
                 name="p_name"
@@ -28,6 +29,7 @@
             <div class="mb-3">
               <label for="p_price" class="form-label">Product Price:</label>
               <input
+               value="<%= editData ? editData.p_price : '' %>"
                 type="number"
                 class="form-control"
                 id="p_price"
@@ -39,6 +41,7 @@
               <label for="description" class="form-label">Description:</label>
               <textarea
                 class="form-control"
+                value="<%= editData ? editData.description : '' %>"
                 name="description"
                 id="description"
                 required
@@ -49,6 +52,7 @@
               <select
                 class="form-select"
                 name="category"
+                value="<%= editData ? editData.category : '' %>"
                 id="category"
                 required
               >
@@ -58,7 +62,9 @@
                 <option value="Footwear">Footwear</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+         <button type="submit" class="btn btn-<%= editData ? 'warning' : 'primary' %>">
+    <%= editData ? 'Update' : 'Add' %>
+  </button>
           </form>
         </div>
       </div>
@@ -88,11 +94,8 @@
                 <td><%= value.description %></td>
                 <td><%= value.category %></td>
                 <td>
-                  <a
-                    href="/edit/<%= value._id %>"
-                    class="btn btn-warning me-3"
-                    >Edit</a
-                  >
+                <a href="/edit/<%= value._id %>" class="btn btn-warning me-3">Edit</a>
+
                   <a
                     href="/delete/<%= value._id %>"
                     class="btn btn-danger "
