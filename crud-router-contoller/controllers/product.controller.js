@@ -1,8 +1,11 @@
 
 const Product = require("../models/productSchema")
 
-module.exports.home = (req,res)=>{
-    res.render('index')
+module.exports.home = async(req,res)=>{
+    let Products=await Product.find({});
+    res.render('index',{
+        data:Products,
+    })
 }
 
 module.exports.addProduct = async (req,res)=>{
