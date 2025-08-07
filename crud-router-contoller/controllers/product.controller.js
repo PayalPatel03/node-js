@@ -19,3 +19,18 @@ module.exports.addProduct = async (req,res)=>{
         res.redirect(req.get('Referrer') || '/')
     }
 }
+
+//delete
+module.exports.deleteProduct = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Product.findByIdAndDelete(id);
+    res.redirect('/');
+  } catch (err) {
+    console.log(err);
+    res.redirect('/');
+  }
+};
+
+//edit
+

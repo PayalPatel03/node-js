@@ -14,8 +14,7 @@
       <div class="row">
         <div class="col-md-7 mx-auto">
           <h3 class="my-4">Add Product Detail:</h3>
-       <form method="POST" action="/add-product">
-
+          <form method="POST" action="/add-product">
             <div class="mb-3">
               <label for="p_name" class="form-label">Product Name:</label>
               <input
@@ -47,7 +46,12 @@
             </div>
             <div class="mb-3">
               <label for="category" class="form-label">Category:</label>
-              <select class="form-select" name="category" id="category" required>
+              <select
+                class="form-select"
+                name="category"
+                id="category"
+                required
+              >
                 <option value="" disabled selected>--Select-category--</option>
                 <option value="Fashion">Fashion</option>
                 <option value="Electronic">Electronic</option>
@@ -62,7 +66,9 @@
       <div class="row mt-5">
         <div class="col-md-12">
           <table class="caption-top table table-dark table-hover table-striped">
-            <caption><h2>Product List</h2></caption>
+            <caption>
+              <h2>Product List</h2>
+            </caption>
             <thead>
               <tr>
                 <th>Sr No.</th>
@@ -75,17 +81,25 @@
             </thead>
             <tbody>
               <% data.forEach((value, idx) => { %>
-                <tr>
-                  <td><%= idx + 1 %></td>
-                  <td><%= value.p_name %></td>
-                  <td><%= value.p_price %></td>
-                  <td><%= value.description %></td>
-                  <td><%= value.category %></td>
-                  <td>
-                    <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                  </td>
-                </tr>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= value.p_name %></td>
+                <td><%= value.p_price %></td>
+                <td><%= value.description %></td>
+                <td><%= value.category %></td>
+                <td>
+                  <a
+                    href="/edit/<%= value._id %>"
+                    class="btn btn-warning me-3"
+                    >Edit</a
+                  >
+                  <a
+                    href="/delete/<%= value._id %>"
+                    class="btn btn-danger "
+                    >Delete</a
+                  >
+                </td>
+              </tr>
               <% }) %>
             </tbody>
           </table>
@@ -93,8 +107,6 @@
       </div>
     </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
