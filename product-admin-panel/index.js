@@ -10,6 +10,7 @@ app.set('view engine','ejs');
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('assets'))
 
+
 app.use('/',require('./routers/product.router'))
 
 app.listen(port,async (err)=>{

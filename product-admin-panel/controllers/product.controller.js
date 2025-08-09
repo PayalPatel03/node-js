@@ -40,3 +40,24 @@ module.exports.deleteProduct = async (req,res)=>{
         res.redirect(req.get("Referrer" || "/"))
     }
 }
+
+module.exports.editProduct = async (req,res)=>{
+    try {
+        let {id} = req.params;
+        let product = await Product.findById(id)
+        res.render('pages/editProductPage',{product})
+    } catch (error) {
+        console.log(error)
+        res.render('pages/editProductPage',{product : []})
+    }
+}
+module.exports.updateProduct = async (req, res) => {
+    try {
+        let { id } = req.params;
+        await Product.findByIdAndUpdate(id, req.body, { new: true });
+        res.redirect('/viewProductPage');
+    } catch (error) {
+        console.log(error);
+        res.redirect('/viewProductPage');
+    }
+};

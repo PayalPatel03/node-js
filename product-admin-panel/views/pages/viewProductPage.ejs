@@ -48,14 +48,24 @@
                 <td><%= p_price %></td>
                 <td><%= description %></td>
                 <td><%= category %></td>
-                <td>
-                  <a href="/edit/<%= id %>" class="btn btn-warning me-1"
-                    >Edit</a
-                  >
-                  <a href="/delete/<%= id %>" class="btn btn-danger me-1"
-                    >Delete</a
-                  >
-                </td>
+              <td>
+  <a href="/edit/<%= id %>" 
+     class="btn btn-warning me-1" 
+     data-bs-toggle="tooltip" 
+     data-bs-placement="top" 
+     title="Edit">
+    <i class="fa-solid fa-pencil"></i>
+  </a>
+
+  <a href="/delete/<%= id %>" 
+     class="btn btn-danger me-1" 
+     data-bs-toggle="tooltip" 
+     data-bs-placement="top" 
+     title="Delete">
+    <i class="fa-solid fa-trash"></i>
+  </a>
+</td>
+
               </tr>
               <% }) %>
             </tbody>
