@@ -26,9 +26,24 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
-          <form class="form-horizontal" method="post" action="/create">
+          <form enctype="multipart/form-data" class="form-horizontal" method="post" action="/create">
             <div class="card-body">
               <h4 class="card-title fw-bold text-info">Product Details</h4>
+               <div class="form-group row">
+                <label
+                  for="image"
+                  class="col-sm-3 text-nowrap control-label col-form-label"
+                  >Product Image:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="image"
+                    id="image"
+                  />
+                </div>
+              </div>
               <div class="form-group row">
                 <label
                   for="fname"
