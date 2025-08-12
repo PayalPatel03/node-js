@@ -1,5 +1,6 @@
 
 const Product = require("../models/productSchema")
+const fs=require('fs');
 
 module.exports.home = (req,res)=>{
     res.render('index')
@@ -7,7 +8,8 @@ module.exports.home = (req,res)=>{
 
 module.exports.addProduct = async (req,res)=>{
     try{
-        await Product.create(req.body)
+        let image=req.file.path;
+        await Product.create({...req.body,image});
         res.redirect(req.get('Referrer') || '/')
     }
     catch(err){
@@ -32,8 +34,9 @@ module.exports.viewProductPage =async (req,res)=>{
 
 module.exports.deleteProduct = async (req,res)=>{
     try {
-        let {id} = req.params
-        await Product.findByIdAndDelete(id);
+        let {id} = req.params;
+        let product= await Product.findByIdAndDelete(id);
+        fs.unlinkSync(product.image);
         res.redirect(req.get("Referrer" || "/"))
     } catch (error) {
         console.log(error)
