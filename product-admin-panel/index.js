@@ -21,7 +21,6 @@ app.use('/',require('./routers/product.router'))
 app.listen(port,async (err)=>{
     if(!err){
          await db();
-        
         console.log("Server started..");
         console.log("http://localhost:"+port);
     }
