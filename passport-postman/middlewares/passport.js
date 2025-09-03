@@ -9,6 +9,7 @@ passport.use(
       if (user) {
         if (user.password == password) {
           return done(null, user);
+          
         } else {
           return done(null, false);
         }
