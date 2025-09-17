@@ -1,6 +1,6 @@
 
 const { Router } = require("express");
-const { homePage,loginPage,signupPage,signup, logout, changePassPage, changePass, emailConfirmPage, verifyOtpPage, verifyOtp } = require("../controllers");
+const { homePage,loginPage,signupPage,signup, logout, changePassPage, changePass, emailConfirmPage, verifyOtpPage, verifyOtp, verifyPage, newPassPage, emailConfirm, verify, newPass } = require("../controllers");
 const passport = require("passport");
 
 const router = Router()
@@ -16,6 +16,16 @@ router.post('/verifyOtp',verifyOtp)
 
 router.post('/signup',signup)
 router.post('/login',passport.authenticate('local',{successRedirect:'/',failureRedirect:'/login'}))
+
+
+router.get('/emailConfirm',emailConfirmPage)
+router.post('/emailConfirm',emailConfirm)
+
+router.get('/verify',verifyPage)
+router.post('/verify',verify)
+
+router.get('/newPass',newPassPage)
+router.post('/newPass',newPass)
 
 
 router.get('/logout',logout)

@@ -3,8 +3,8 @@ const { mongo, default: mongoose } = require("mongoose")
 
 const db = async()=>{
     try {
-        await mongoose.connect('mongodb+srv://aksharparekh401:12345@cluster0.ncwztql.mongodb.net/changePassword')
-        console.log("Database connected...")
+        await mongoose.connect('mongodb+srv://p6579113:12345@cluster0.zlavh0m.mongodb.net/changePassword')
+        console.log("Database connected succeffully")
     } catch (error) {
         console.log(error)        
     }
