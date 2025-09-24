@@ -1,0 +1,86 @@
+
+<%- include('../partials/header.ejs')%>
+
+<div class="page-wrapper">
+
+  <div class="page-breadcrumb">
+    <div class="row">
+      <div class="col-12 d-flex no-block align-items-center">
+        <h4 class="page-title">Tables</h4>
+        <div class="ml-auto text-right">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Product
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title m-b-0 fw-bold text-info">Product Details :</h5>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% product.map((val,idx)=>{ 
+            let  {p_name,image,p_price,category,description,id} = val %>
+              <tr>
+                <td><%= idx +1%></td>
+                <td>
+                  <img src="../<%= image %>" alt="image" width="50" height="50">
+                </td>
+                <td><%= p_name %></td>
+                <td><%= p_price %></td>
+                <td><%= description %></td>
+                <td><%= category %></td>
+              <td>
+  <a href="/edit/<%= id %>" 
+     class="btn btn-warning me-1" 
+     data-bs-toggle="tooltip" 
+     data-bs-placement="top" 
+     title="Edit">
+    <i class="fa-solid fa-pencil"></i>
+  </a>
+
+  <a href="/delete/<%= id %>" 
+     class="btn btn-danger me-1" 
+     data-bs-toggle="tooltip" 
+     data-bs-placement="top" 
+     title="Delete">
+    <i class="fa-solid fa-trash"></i>
+  </a>
+</td>
+
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+ 
+  <%- include('../partials/footer.ejs')%>
+</div>
