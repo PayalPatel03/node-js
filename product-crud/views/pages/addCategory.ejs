@@ -1,0 +1,66 @@
+
+
+<%- include('../partials/header.ejs')%>
+
+<div class="page-wrapper">
+
+  <div class="page-breadcrumb">
+    <div class="row">
+      <div class="col-12 d-flex no-block align-items-center">
+        <h4 class="page-title fw-bold">Product Data</h4>
+        <div class="ml-auto text-nowrap">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Product
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="container-fluid">
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <form enctype="multipart/form-data" class="form-horizontal" method="post" action="">
+            <div class="card-body">
+              <h4 class="card-title fw-bold text-info">Category Details</h4>
+               
+              <div class="form-group row">
+                <label
+                  for="name"
+                  class="col-sm-3 text-nowrap control-label col-form-label"
+                  >Category Name:</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="name"
+                    placeholder="Enter category name"
+                  />
+                </div>
+              </div>
+             
+              
+            </div>
+            <div class="border-top">
+              <div class="card-body">
+                <button type="submit" class="btn btn-info">Add category</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <%- include('../partials/footer.ejs')%>
+</div>
