@@ -1,25 +1,22 @@
-const express = require('express');
-const { addProductPage } = require('./controllers/product.controller');
-const db = require('./config/db');
 
-const app = express();
-const port = 1503;
+const express = require('express')
+const db = require('./config/db')
+const path = require('path')
+const app = express()
+const port = 3020
 
-app.set('view engine','ejs');
+app.set('view engine','ejs')
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
-app.use(express.urlencoded({extended:true}))
-// app.use(express.static('assets'))
-// app.use('/uploads',express.static(__dirname+'/uploads'));
-app.use('/uploads', express.static((__dirname, 'uploads')));
 
+app.use('/uploads',express.static(path.join(__dirname+'/uploads')))
 
+app.use('/',require('./routers'))
 
-app.use('/',require('./routers/product.router'))
-
-app.listen(port,async (err)=>{
+app.listen(port,(err)=>{
     if(!err){
-         await db();
-        console.log("Server started..");
-        console.log("http://localhost:"+port);
+        db()
+        console.log('Server started')
+        console.log('http://localhost:'+port)
     }
 })

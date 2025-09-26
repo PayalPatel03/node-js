@@ -1,15 +1,13 @@
-
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon icon -->
     <link
       rel="icon"
       type="image/png"
@@ -58,7 +56,7 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="index.html">
               <!-- Logo icon -->
               <b class="logo-icon p-l-10">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -295,7 +293,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                   ><img
-                    src="/assets/images/users/1.jpg"
+                    src="assets/images/users/1.jpg"
                     alt="user"
                     class="rounded-circle"
                     width="31"
@@ -328,11 +326,19 @@
                   </div>
                 </div>
               </li>
+              <!-- ============================================================== -->
+              <!-- User profile and search -->
+              <!-- ============================================================== -->
             </ul>
           </div>
         </nav>
       </header>
-
+      <!-- ============================================================== -->
+      <!-- End Topbar header -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Left Sidebar - style you can find in sidebar.scss  -->
+      <!-- ============================================================== -->
       <aside class="left-sidebar" data-sidebarbg="skin5">
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
@@ -345,29 +351,27 @@
                   href="javascript:void(0)"
                   aria-expanded="false"
                   ><i class="mdi mdi-receipt"></i
-                  ><span class="hide-menu">Product </span></a
+                  ><span class="hide-menu">Product</span></a
                 >
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="/addProductPage" class="sidebar-link"
+                    <a href="/form-basic" class="sidebar-link"
                       ><i class="mdi mdi-note-outline"></i
-                      ><span class="hide-menu">Add Product </span></a
+                      ><span class="hide-menu"> Add Product </span></a
                     >
                   </li>
                   <li class="sidebar-item">
                     <a
                       class="sidebar-link waves-effect waves-dark sidebar-link"
-                      href="/viewProductPage"
+                      href="/table"
                       aria-expanded="false"
                       ><i class="mdi mdi-border-inside"></i
                       ><span class="hide-menu">View Product</span></a
                     >
                   </li>
-                 
                 </ul>
               </li>
             </ul>
-
             <ul id="sidebarnav" class="p-t-30">
               <li class="sidebar-item">
                 <a
@@ -379,24 +383,53 @@
                 >
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="category/addCategory" class="sidebar-link"
+                    <a href="/category/add-category" class="sidebar-link"
                       ><i class="mdi mdi-note-outline"></i
-                      ><span class="hide-menu">Add Category </span></a
+                      ><span class="hide-menu"> Add Category </span></a
                     >
                   </li>
                   <li class="sidebar-item">
                     <a
                       class="sidebar-link waves-effect waves-dark sidebar-link"
-                      href="category/viewCategory"
+                      href="/category/view-category"
                       aria-expanded="false"
                       ><i class="mdi mdi-border-inside"></i
                       ><span class="hide-menu">View Category</span></a
                     >
                   </li>
-                 
                 </ul>
               </li>
             </ul>
+
+             <ul id="sidebarnav" class="p-t-30">
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-receipt"></i
+                  ><span class="hide-menu">Sub Category </span></a
+                >
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="/subcategory/add-category" class="sidebar-link"
+                      ><i class="mdi mdi-note-outline"></i
+                      ><span class="hide-menu"> Add SubCategory </span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a
+                      class="sidebar-link waves-effect waves-dark sidebar-link"
+                      href="/subcategory/view-category"
+                      aria-expanded="false"
+                      ><i class="mdi mdi-border-inside"></i
+                      ><span class="hide-menu">View SubCategory</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            
           </nav>
           <!-- End Sidebar navigation -->
         </div>
