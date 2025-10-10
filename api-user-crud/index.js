@@ -1,19 +1,22 @@
-const express = require("express");
-const db = require("./configs/database");
-const bodyParser = require("body-parser");
-const port = 8081;
-const app = express();
 
-require('dotenv').config(); 
+const express = require('express');
+const db = require('./configs/database');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const app = express()
+const port = 3000;
+
+app.use(bodyParser.urlencoded({extended:true}))
+app.use('/api',require('./router/index'))
+app.use(cookieParser());
 app.use(bodyParser.json());
-app.set('view engine','ejs');
-app.use(express.urlencoded({extended:true}))
-app.use('/api',require('./routes'))
 
-app.listen(port, (err) => {
-  if (!err) {
-    db();
-    console.log("Server Started");
-    console.log("http://localhost:" + port);
-  }
-});
+
+
+app.listen(port,(err)=>{
+    db()
+    if(!err){
+        console.log("Server started...")
+        console.log("http://localhost:"+port)
+    }
+})
