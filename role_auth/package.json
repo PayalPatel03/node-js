@@ -2,10 +2,21 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
-    "dotenv": "^17.2.3",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongoose": "^8.19.1",
     "morgan": "^1.10.1"
-  }
+  },
+  "name": "role_auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
 }
