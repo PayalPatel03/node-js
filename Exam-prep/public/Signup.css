@@ -1,0 +1,104 @@
+/* Background styling */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #74b9ff, #a29bfe);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Signup container */
+.signup-container {
+  width: 120px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+}
+
+/* Expanded effect on hover */
+.signup-container:hover {
+  width: 350px;
+  height: 450px;
+}
+
+/* Title always visible */
+.signup-title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 60px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s ease;
+}
+
+/* Form hidden initially */
+.signup-form {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+/* Show form on hover */
+.signup-container:hover .signup-form {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Input styling */
+.signup-form input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px auto;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  display: block;
+  font-size: 14px;
+  color: #333;
+  transition: 0.3s;
+}
+
+.signup-form input:focus {
+  background: white;
+  box-shadow: 0 0 5px #6c5ce7;
+}
+
+/* Signup button */
+.signup-btn {
+  width: 85%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #6c5ce7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+  background: #341f97;
+  transform: scale(1.05);
+}
+
+/* Small text */
+.signup-text {
+  margin-top: 20px;
+  color: #eee;
+  font-size: 13px;
+}
